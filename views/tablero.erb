@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Busca Minas</title>
+</head>
+<body>
+<div class="container">
+    <div class="tablero">
+
+    </div>
+</div>
+<h1>Buscaminas etc </h1>
+
+<form method="post" action="/coordenadas">
+    Eje x:<input type="text" name="ejeX">
+    <br>
+    Eje y:<input type="text" name="ejeY">
+    <input type="submit" value="Enviar">
+
+</form>
+
+<h2> <%=@ejeX%> - <%=@ejeY%> </h2s>
+
+</body>
+</html>
