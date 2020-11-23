@@ -4,7 +4,6 @@ require "matrix/lup_decomposition.rb"
 class Minas 
     def initialize
         @tam=8
-        
         @tablero = Matrix.zero(@tam, @tam)
         @tableroInterfaz = Matrix.build(@tam) { " " }
     end
