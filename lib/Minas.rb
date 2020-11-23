@@ -3,18 +3,14 @@ require "matrix/eigenvalue_decomposition.rb"
 require "matrix/lup_decomposition.rb"
 class Minas 
     def initialize
-        @filas=8
-        @columnas=8
-        @tablero = Matrix.zero(@filas, @columnas)
-        @tableroInterfaz = Matrix.zero(@filas, @columnas)
+        @tam=8
+        
+        @tablero = Matrix.zero(@tam, @tam)
+        @tableroInterfaz = Matrix.build(@tam) { " " }
     end
 
-    def getCoordenadas(x, y)
-        return x.to_s+"-"+y.to_s
-    end 
-
     def verificarCoordenadas(x, y)
-        if (x>=0 && y>=0 && x<@filas && y<@columnas)
+        if (x>=0 && y>=0 && x<@tam && y<@tam)
             return true
         else
             return false
@@ -80,12 +76,21 @@ class Minas
         end
         return contador
     end
+    def verValorPosicionDelTableroInterfaz(x,y)
+        return @tableroInterfaz[x,y]
+    end
+    def getTableroInterfaz()
+        return @tableroInterfaz
+    end
 
     def marcarTableroInterfaz(x,y)
-        if(verificarCoordenadas(x,y))
-            @tableroInterfaz[x,y]=1
+        if(verificarCoordenadas(x,y) && @tableroInterfaz[x,y]==" ")
+            if (@tablero[x,y]== 9)
+                @tableroInterfaz[x,y]="*"
+            else
+                @tableroInterfaz[x,y]=@tablero[x,y].to_s
+            end
         end 
-
     end
 
 end

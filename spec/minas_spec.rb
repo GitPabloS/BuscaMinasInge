@@ -2,12 +2,7 @@ require "Minas"
 require "spec_helper"
 
 RSpec.describe Minas do
-    
-    it "Enviar coordenadas X y Y y recibir esas coordenadas" do
-        minas=Minas.new
-        coordenadas=minas.getCoordenadas(0,1)
-        expect(coordenadas).to eq("0-1")
-    end
+
 
     it "Verificar que las coordenadas no se pasen del tablero" do
         minas=Minas.new
@@ -37,5 +32,15 @@ RSpec.describe Minas do
         minas.generarMinas()
         coordenadas=minas.verificarPerimetro(7,2)
         expect(coordenadas).to eq(3)
+    end
+
+    it "Verificar que Marca el Tablero de la interfaz" do
+        minas=Minas.new
+        minas.generarMinas()
+        val = minas.verValorPosicionDelTableroInterfaz(7,2)
+        expect(val).to eq(" ")
+        minas.marcarTableroInterfaz(7,2)
+        val = minas.verValorPosicionDelTableroInterfaz(7,2)
+        expect(val).to eq("9")
     end
 end

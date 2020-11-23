@@ -7,16 +7,26 @@ require "./lib/Minas"
 def initialize()
     @tableroI= Minas.new()
 end
-
 get '/' do
-    @tableroI.generarMinas()
-    erb :tablero
+    erb :interfazInicio
 end
 
+get '/modoJuego' do
+    erb :interfazEleccionModoJuego
+end
+get '/iniciarJuegoNormal' do
+    @tableroI.generarMinas()
+    @table=@tableroI.getTableroInterfaz()
+    erb :interfazTableroNormal
+end
+get '/juegoPersonalizado' do
+end
 
-post '/coordenadas' do
+post '/jugada' do
     @ejeX=params[:ejeX].to_i
     @ejeY=params[:ejeY].to_i
-    @tableroI.marcarTableroInterfaz(@ejeX-1,@ejeY-1)
-    erb :tablero
+    res = @tableroI.marcarTableroInterfaz(@ejeY-1,@ejeX-1)
+    @table=@tableroI.getTableroInterfaz()
+   # @c00 = table[0,0]
+    erb :interfazTableroNormal
 end
