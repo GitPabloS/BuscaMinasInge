@@ -5,7 +5,7 @@ require "./lib/Minas"
 
 
 def initialize()
-    @tableroI= Minas.new()
+    @tableroI= Minas.new
 end
 get '/' do
     erb :interfazInicio
@@ -14,12 +14,14 @@ end
 get '/modoJuego' do
     erb :interfazEleccionModoJuego
 end
-get '/iniciarJuegoNormal' do
-    @tableroI.generarMinas()
+get '/modoJuego/iniciarJuegoNormal' do
+    @tableroI.iniciarJuego(8)
+    @tableroI.generarMinasTablero8()
     @table=@tableroI.getTableroInterfaz()
     erb :interfazTableroNormal
 end
-get '/juegoPersonalizado' do
+get '/modoJuego/juegoPersonalizado' do
+    erb :interfazConfiguracionTableroPersonalizado
 end
 
 post '/jugada' do
