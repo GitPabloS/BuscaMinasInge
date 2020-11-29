@@ -3,6 +3,10 @@ require "spec_helper"
 
 RSpec.describe Minas do
 
+    it "Cuando creo el tablero debe inicializarce en ceros" do
+        minas=Minas.new
+        expect(mina.getTablero).to eq([[0,0],[0,0]])
+    end
 
     it "Verificar que las coordenadas no se pasen del tablero" do
         minas=Minas.new
@@ -14,6 +18,12 @@ RSpec.describe Minas do
         minas=Minas.new
         coordenadas=minas.verificarCoordenadas(-1,8)
         expect(coordenadas).to eq(false)
+    end
+
+    it "Verificar al rededor de una mina que haya unos" do
+        minas=Minas.new(3)
+        minas.generarMina(2,2)
+        minas.
     end
     it "Verificar que no hay minas en coordenadas del tablero devolviendo 0" do
         minas=Minas.new

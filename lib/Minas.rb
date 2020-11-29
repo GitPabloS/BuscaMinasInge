@@ -19,11 +19,23 @@ class Minas
     def verValorPosicionDelTablero(x,y)
         return @tablero[x,y]
     end
+
+    def mostrarTableroEnHTML()
+        fila= @tableroInterfaz.row_count
+        columna = @tableroInterfaz.column_count
+        tablero = ''
+        (0..fila-1).each do |fila|
+            (0..columna-1).each do |columna|
+                tablero = tablero + '<div class="casilla">' + @tableroInterfaz[fila,columna].to_s + '</div>'
+            end
+        end
+        tablero
+    end
 #Esta funcion es para delimitar el perimetro y no encontramos la forma de implementarlo en un test, 
 # ya que, el  codigo final se trabajara con bombas puesta aleatoriamente
     def perimetroDeMina(x,y)
         i=x-1
-        j=y-1        
+        j=y-1
         3.times do 
             3.times do
                 if(verificarCoordenadas(i,j) && @tablero[i,j]!=9)
