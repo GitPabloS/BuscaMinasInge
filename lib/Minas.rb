@@ -7,6 +7,7 @@ class Minas
         @tablero = ""
         @tableroInterfaz = ""
         @tableroDescubierto = ""
+        @numMinPorIncertar=0
     end
     #CAmbie Reiniciar juego por comenzarJuego ya que ahora vamos tener un menu de inicioS
     def iniciarJuego(tam)
@@ -61,26 +62,16 @@ class Minas
     end
     
     def generarMinasTablero8()
-        @tablero[1,2] = 9
-        perimetroDeMina(1,2)
-        @tablero[3,2] = 9
-        perimetroDeMina(3,2)
-        @tablero[4,2] = 9
-        perimetroDeMina(4,2)
-        @tablero[5,3] = 9
-        perimetroDeMina(5,3)
-        @tablero[6,0] = 9
-        perimetroDeMina(6,0)
-        @tablero[6,2] = 9
-        perimetroDeMina(6,2)
-        @tablero[4,4] = 9
-        perimetroDeMina(4,4)
-        @tablero[6,3] = 9
-        perimetroDeMina(6,3)
-        @tablero[7,2] = 9
-        perimetroDeMina(7,2)
-        @tablero[7,4] = 9
-        perimetroDeMina(7,4)
+        generarMina(1,2)
+        generarMina(3,2)
+        generarMina(4,2)
+        generarMina(5,3)
+        generarMina(6,0)
+        generarMina(6,2)
+        generarMina(4,4)
+        generarMina(6,3)
+        generarMina(7,2)
+        generarMina(7,4)
     end
     
     def getTableroInterfaz()
@@ -149,5 +140,21 @@ class Minas
         end
         stringErb = stringErb + "</table>"
         return stringErb
+    end
+
+    def incertarNumMinasPorIncertar(numMinas)
+        @numMinPorIncertar= numMinas
+    end
+
+    def incertarMina(x,y)
+        if (getValorPosicionDelTablero(x,y) != 9 && verificarCoordenadas(x,y))
+            generarMina(x,y)
+            mensajeError=""
+            @numMinPorIncertar=@numMinPorIncertar-1
+        else
+            mensajeError="No ingresaste el tamaño del tablero y/o el numero de minas acorde a las reglas del juego"
+            notificacionDeIngresoMina=false
+        end
+        return [mensajeError, @numMinPorIncertar]
     end
 end

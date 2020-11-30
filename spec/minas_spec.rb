@@ -161,4 +161,28 @@ RSpec.describe Minas do
         minas.generarMina(1,1)
         expect(minas.obtenerInterfzErbStringBackend()).to eq("<table><tr><td>1</td><td>1</td></tr><tr><td>1</td><td>9</td></tr></table>")
     end
+    it "Obtener las respuestas para el ingreso de las minas(1)" do
+        minas=Minas.new
+        minas.incertarNumMinasPorIncertar(4)
+        minas.iniciarJuego(4)
+        res=minas.incertarMina(0,1)
+        expect(res).to eq(["",3])
+    end
+    it "Obtener las respuestas para el ingreso de las minas(2)" do
+        minas=Minas.new
+        minas.incertarNumMinasPorIncertar(4)
+        minas.iniciarJuego(4)
+        res=minas.incertarMina(0,1)
+        expect(res).to eq(["",3])
+        res=minas.incertarMina(0,1)
+        expect(res).to eq(["No ingresaste el tamaño del tablero y/o el numero de minas acorde a las reglas del juego",3])
+        res=minas.incertarMina(0,-1)
+        expect(res).to eq(["No ingresaste el tamaño del tablero y/o el numero de minas acorde a las reglas del juego",3])
+        res=minas.incertarMina(0,0)
+        expect(res).to eq(["",2])
+        res=minas.incertarMina(3,1)
+        expect(res).to eq(["",1])
+        res=minas.incertarMina(2,3)
+        expect(res).to eq(["",0])
+    end
 end
