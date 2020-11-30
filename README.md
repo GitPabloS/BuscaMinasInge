@@ -2,6 +2,7 @@
 
 https://travis-ci.com/github/GitPabloS/BuscaMinasInge
 
+trello.com/b/D0qDIltu/busca-minas 
 
 ### Para el setup sin docker:
 

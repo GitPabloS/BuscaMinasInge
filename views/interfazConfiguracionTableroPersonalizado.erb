@@ -1,0 +1,15 @@
+<body>
+
+<h1>Personaliza tu tablero para el juego</h1>
+
+    <form method="post" action="/modoJuego/juegoPersonalizado/definirParametros">
+        Elige el tamaño del tablero:<input type="text" name="tamTablero">
+        <br>
+        Elige el numero de minas:<input type="text" name="numMinas">
+        <input type="submit" value="Enviar">
+
+    </form>
+    <form method='get' action='/modoJuego/juegoPersonalizado/definirParametros'>
+         <p><%=@mensajeError%></p>
+    </form>
+</body>

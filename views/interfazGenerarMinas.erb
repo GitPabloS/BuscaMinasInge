@@ -17,16 +17,19 @@
 <!--#<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">-->
 </head>
 <body>
-<h1>Buscaminas etc </h1>
+<h1>Buscaminas etc <%=@numMinas%> </h1>
 <div>
     <%=@stringTablero%> 
  </div>
 
-<form method="post" action="/jugada">
+<form method="post" action="/modoJuego/juegoPersonalizado/definirParametros/generarMinas">
     Eje x:<input type="text" name="ejeX">
     <br>
     Eje y:<input type="text" name="ejeY">
     <input type="submit" value="Enviar">
 
 </form>
+<form method='get' action='/modoJuego/juegoPersonalizado/definirParametros/generarMinas'>
+         <p><%=@mensajeError%></p>
+    </form>
 </body>
