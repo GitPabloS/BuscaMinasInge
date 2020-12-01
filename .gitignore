@@ -2,3 +2,4 @@ webrat.log
 coverage/
 *.orig
 Gemfile.lock
+.gemlock
