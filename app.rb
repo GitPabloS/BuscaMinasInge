@@ -65,9 +65,21 @@ end
 post '/jugada' do
     @ejeX=params[:ejeX].to_i
     @ejeY=params[:ejeY].to_i
-    res = @tableroI.marcarTableroInterfaz(@ejeY-1,@ejeX-1)
+    @tableroI.marcarTableroInterfaz(@ejeY-1,@ejeX-1)
+    @mensajeFinJuego=@tableroI.sigueElJuego()
     @stringTablero = @tableroI.obtenerInterfzErbString()
     #@table=@tableroI.getTableroInterfaz()
+   # @c00 = table[0,0]
+    erb :interfazTablero
+end
+
+get '/reglas' do
+    erb :interfazReglas
+end
+get '/reiniciar' do
+
+    @tableroI.reiniciarJuego()
+    @stringTablero = @tableroI.obtenerInterfzErbString()
    # @c00 = table[0,0]
     erb :interfazTablero
 end

@@ -8,6 +8,9 @@ class Minas
         @tableroInterfaz = ""
         @tableroDescubierto = ""
         @numMinPorIncertar=0
+        @numeroDeMinas=0
+        @contCasillasMarcadas=0
+        @sigueElJuegoBool=true
     end
     #CAmbie Reiniciar juego por comenzarJuego ya que ahora vamos tener un menu de inicioS
     def iniciarJuego(tam)
@@ -15,10 +18,14 @@ class Minas
         @tablero = Matrix.zero(@tamanho, @tamanho)
         @tableroInterfaz = Matrix.build(tam) { " " }
         @tableroDescubierto = Matrix.build(tam) { false }
+        @contCasillasMarcadas=0
+        @sigueElJuegoBool=true
     end
     def reiniciarJuego()
         @tableroInterfaz = Matrix.build(@tamanho) { " " }
         @tableroDescubierto = Matrix.build(@tamanho) { false }
+        @contCasillasMarcadas=0
+        @sigueElJuegoBool=true
         #@tableroInterfaz = Matrix[[" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",]]
     end
 
@@ -62,6 +69,7 @@ class Minas
     end
     
     def generarMinasTablero8()
+        @numeroDeMinas=10
         generarMina(1,2)
         generarMina(3,2)
         generarMina(4,2)
@@ -85,11 +93,14 @@ class Minas
     end
 
     def marcarTableroInterfaz(x,y)
-        if(verificarCoordenadas(x,y) && @tableroInterfaz[x,y]==" ")
+        
+        if(verificarCoordenadas(x,y) && @tableroInterfaz[x,y]==" " && @sigueElJuegoBool)
             if @tablero[x,y] == 9
                 @tableroInterfaz[x,y]="*"
+                @sigueElJuegoBool=false
             else
-                @tableroInterfaz[x,y]=@tablero[x,y].to_s
+                @tableroInterfaz[x,y] = @tablero[x,y].to_s
+                @contCasillasMarcadas = @contCasillasMarcadas+1
             end
            
         end 
@@ -144,6 +155,7 @@ class Minas
 
     def incertarNumMinasPorIncertar(numMinas)
         @numMinPorIncertar= numMinas
+        @numeroDeMinas=numMinas
     end
 
     def incertarMina(x,y)
@@ -157,4 +169,18 @@ class Minas
         end
         return [mensajeError, @numMinPorIncertar]
     end
+
+    def sigueElJuego()
+        mensajeFinJuego=""
+        if(!@sigueElJuegoBool)
+            mensajeFinJuego="Que pena, Perdiste"
+        end
+        if ((@contCasillasMarcadas+@numeroDeMinas) == (@tamanho*@tamanho))
+            mensajeFinJuego="Felicitaciones Ganaste"
+            @sigueElJuegoBool=false
+        end
+        return mensajeFinJuego
+
+    end
+
 end

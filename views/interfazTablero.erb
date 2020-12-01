@@ -17,7 +17,14 @@
 <!--#<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">-->
 </head>
 <body>
+<h1><%=@mensajeFinJuego%> </h1>
 <h1>Buscaminas etc </h1>
+<form method="get" action="/">
+    <input type="submit" value="Menu Principal">
+</form>
+<form method="get" action="/reiniciar">
+    <input type="submit" value="Reiniciar">
+</form>
 <div>
     <%=@stringTablero%> 
  </div>
@@ -29,4 +36,5 @@
     <input type="submit" value="Enviar">
 
 </form>
+
 </body>

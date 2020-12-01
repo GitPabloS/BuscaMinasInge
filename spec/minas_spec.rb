@@ -97,13 +97,14 @@ RSpec.describe Minas do
     it "Verificar que se reinicia el tablero interfaz con las bombas en su mismo lugar" do
         minas=Minas.new
         minas.iniciarJuego(2)
-        minas.generarMina(1,1)
-        minas.marcarTableroInterfaz(1,1)
+        minas.incertarNumMinasPorIncertar(1)
+        minas.incertarMina(1,1)
+        minas.marcarTableroInterfaz(0,1)
         minas.marcarTableroInterfaz(1,0)
         expect(minas.getValorPosicionDelTableroInterfaz(0,0)).to eq(" ")
-        expect(minas.getValorPosicionDelTableroInterfaz(0,1)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(0,1)).to eq("1")
         expect(minas.getValorPosicionDelTableroInterfaz(1,0)).to eq("1")
-        expect(minas.getValorPosicionDelTableroInterfaz(1,1)).to eq("*")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,1)).to eq(" ")
         minas.reiniciarJuego()
         expect(minas.getValorPosicionDelTableroInterfaz(0,0)).to eq(" ")
         expect(minas.getValorPosicionDelTableroInterfaz(0,1)).to eq(" ")
@@ -184,5 +185,66 @@ RSpec.describe Minas do
         expect(res).to eq(["",1])
         res=minas.incertarMina(2,3)
         expect(res).to eq(["",0])
+    end
+
+    it "Verificar Si es que sigue el juego o ya termino(1)" do
+        minas=Minas.new
+        minas.iniciarJuego(2)
+        minas.incertarNumMinasPorIncertar(1)
+        minas.incertarMina(1,1)
+        minas.marcarTableroInterfaz(1,0)
+        expect(minas.getValorPosicionDelTableroInterfaz(0,0)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(0,1)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,0)).to eq("1")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,1)).to eq(" ")
+        expect(minas.sigueElJuego()).to eq("")
+    end
+    it "Verificar Si es que sigue el juego o ya termino(2)" do
+        minas=Minas.new
+        minas.iniciarJuego(2)
+        minas.incertarNumMinasPorIncertar(1)
+        minas.incertarMina(1,1)
+        minas.marcarTableroInterfaz(1,0)
+        expect(minas.getValorPosicionDelTableroInterfaz(0,0)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(0,1)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,0)).to eq("1")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,1)).to eq(" ")
+        expect(minas.sigueElJuego()).to eq("")
+
+        minas.marcarTableroInterfaz(1,1)
+        expect(minas.getValorPosicionDelTableroInterfaz(0,0)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(0,1)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,0)).to eq("1")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,1)).to eq("*")
+        expect(minas.sigueElJuego()).to eq("Que pena, Perdiste")
+
+    end
+
+    it "Verificar Si es que sigue el juego o ya termino(3)" do
+        minas=Minas.new
+        minas.iniciarJuego(2)
+        minas.incertarNumMinasPorIncertar(1)
+        minas.incertarMina(1,1)
+        minas.marcarTableroInterfaz(1,0)
+        expect(minas.getValorPosicionDelTableroInterfaz(0,0)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(0,1)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,0)).to eq("1")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,1)).to eq(" ")
+        expect(minas.sigueElJuego()).to eq("")
+
+        minas.marcarTableroInterfaz(0,1)
+        expect(minas.getValorPosicionDelTableroInterfaz(0,0)).to eq(" ")
+        expect(minas.getValorPosicionDelTableroInterfaz(0,1)).to eq("1")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,0)).to eq("1")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,1)).to eq(" ")
+        expect(minas.sigueElJuego()).to eq("")
+
+        minas.marcarTableroInterfaz(0,0)
+        expect(minas.getValorPosicionDelTableroInterfaz(0,0)).to eq("1")
+        expect(minas.getValorPosicionDelTableroInterfaz(0,1)).to eq("1")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,0)).to eq("1")
+        expect(minas.getValorPosicionDelTableroInterfaz(1,1)).to eq(" ")
+        expect(minas.sigueElJuego()).to eq("Felicitaciones Ganaste")
+
     end
 end
