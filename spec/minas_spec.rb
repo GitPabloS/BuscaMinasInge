@@ -245,6 +245,5 @@ RSpec.describe Minas do
         expect(minas.getValorPosicionDelTableroInterfaz(1,0)).to eq("1")
         expect(minas.getValorPosicionDelTableroInterfaz(1,1)).to eq(" ")
         expect(minas.sigueElJuego()).to eq("Felicitaciones Ganaste")
-
     end
 end

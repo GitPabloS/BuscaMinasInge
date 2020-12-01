@@ -1,11 +1,50 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!--#<link rel="stylesheet" href="style.css">-->
-<style>
-    table, th,   td {
-    border: 1px solid black;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
     
+    
+    body { 
+      background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("/images/mina.jpg");
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .form_wrap{
+        background-color: rgba(200, 200, 200, 0.65);
+        width:350px;
+        height:auto;
+        margin:50px auto 0;
+        padding:50px;
+        color:#333;
+        border:2px solid #C2D6FF;
+        border-radius:40px 0 40px 0
+    }
+    
+    .content-prev {
+        background-color: rgba(200, 200, 200, 0.65);
+        width:auto;
+        height:auto;
+        margin:50px 0px 0px 0px;
+        padding:50px;
+        color:#333;
+        border:2px solid #C2D6FF;
+        border-radius:40px 0 40px 0;
+    }
+    
+    h1, h2 {
+        color: white;
+        text-shadow: 2px 2px black;
+    }
+    table, th,   td {
 
+        border: 1px solid black;
+        
     }
     td {
         padding-top: 15px;
@@ -13,23 +52,29 @@
         padding-left: 20px;
         padding-bottom: 15px;
     }
+<!--#<link rel="stylesheet" href="style.css">-->
+    
 </style>
 <!--#<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">-->
 </head>
 <body>
-<h1>Buscaminas etc <%=@numMinas%> </h1>
+<center><h1>Buscaminas</h1><center>
+<center>
+<div class="content-prev">
 <div>
     <%=@stringTablero%> 
  </div>
 
-<form method="post" action="/modoJuego/juegoPersonalizado/definirParametros/generarMinas">
+    <form method="post" action="/modoJuego/juegoPersonalizado/definirParametros/generarMinas">
     Eje x:<input type="text" name="ejeX">
     <br>
-    Eje y:<input type="text" name="ejeY">
+    Eje y:<input type="text" name="ejeY"><br>
     <input type="submit" value="Enviar">
 
-</form>
-<form method='get' action='/modoJuego/juegoPersonalizado/definirParametros/generarMinas'>
+    </form>
+    <form method='get' action='/modoJuego/juegoPersonalizado/definirParametros/generarMinas'>
          <p><%=@mensajeError%></p>
     </form>
+<div>
+<center>
 </body>

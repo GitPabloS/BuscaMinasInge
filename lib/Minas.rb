@@ -12,7 +12,7 @@ class Minas
         @contCasillasMarcadas=0
         @sigueElJuegoBool=true
     end
-    #CAmbie Reiniciar juego por comenzarJuego ya que ahora vamos tener un menu de inicioS
+    #Cambie Reiniciar juego por comenzarJuego ya que ahora vamos tener un menu de inicioS
     def iniciarJuego(tam)
         @tamanho=tam
         @tablero = Matrix.zero(@tamanho, @tamanho)
@@ -26,7 +26,6 @@ class Minas
         @tableroDescubierto = Matrix.build(@tamanho) { false }
         @contCasillasMarcadas=0
         @sigueElJuegoBool=true
-        #@tableroInterfaz = Matrix[[" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",], [" "," "," "," "," "," "," "," ",]]
     end
 
     def verificarCoordenadas(x, y)

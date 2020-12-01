@@ -1,15 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body { 
+      background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("/images/mina.jpg");
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+    .form_wrap{
+        background-color: rgba(200, 200, 200, 0.65);
+        width:350px;
+        height:auto;
+        margin:50px auto 0;
+        padding:50px;
+        color:#333;
+        border:2px solid #C2D6FF;
+        border-radius:40px 0 40px 0
+    }
+    .content-prev {
+        background-color: rgba(200, 200, 200, 0.65);
+        width:350px;
+        height:auto;
+        margin:50px 0px 0px 0px;
+        padding:50px;
+        color:#333;
+        border:2px solid #C2D6FF;
+        border-radius:40px 0 40px 0;
+    }
+    h1, h2 {
+        color: white;
+        text-shadow: 2px 2px black;
+    }
+
+    
+    </style>
+</head>
 
 <body>
 
-<h1>Buscaminas etc </h1>
-
-<h2>Menu </h2>
-<form method="get" action="/modoJuego">
-<input type="submit" value="Elegir Modo de Juego">
-</form>
-<form method="get" action="/reglas">
-<input type="submit" value="Reglas">
-</form>
-
+    <center><h1>Bienvenido a Buscaminas</h1><center>
+    <center><div class="content-prev">
+    <h2>Menu </h2>
+    <form method="get" action="/modoJuego">
+    <input type="submit" value="Elegir Modo de Juego">
+    </form>
+    <form method="get" action="/reglas">
+    <input type="submit" value="Reglas">
+    </form>
+    </div>
+    <center>
 
 </body>
+</html>
